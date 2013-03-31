@@ -37,3 +37,18 @@ def update_amas():
         if responses:
             collect.insert({'sub_id': sub_id, 'op': sub.author.name, 'text': text,
                     'responses': responses})
+
+def get_teasers(limit=10):
+    amas = collect.find()[0:limit-1]
+
+    qas = []
+    for ama in amas:
+        qas.append(ama['responses'])
+
+    return qas
+
+
+def get_top_posts(limit=10):
+    posts = collect.find()[0:limit-1]
+
+    return posts
