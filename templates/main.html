@@ -61,7 +61,7 @@
 			<ul class="nav nav-list">
 			  <li class="nav-header">Top Aggregated AMAs</li>
 			  {% for post in top_posts %}
-              <li><a href="/ama/{{post.id}}">{{ post.title }}</a></li>
+              <li><a href="/ama/{{post['post_id']}}">{{ post['title'] }}</a></li>
 			  {% endfor %}
 			</ul>
 		  </div><!--/.well -->
@@ -70,8 +70,8 @@
 		  <div class="hero-unit">
 		    {% for post in top_qas %}
 			<div class="QA">
-			  <p><b>{{ post.question }}</b></p>
-			  <p>{{ post.answer }}</h2>
+			  <p><b>{{ post['question'] }}</b></p>
+			  <p>{{ post['answer'] }}</h2>
 			</div>
 			{% endfor %}
 		  </div>

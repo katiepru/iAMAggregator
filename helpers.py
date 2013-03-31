@@ -35,7 +35,7 @@ def update_amas():
                                             'upvotes': comment.score}
                     break
         if responses:
-            collect.insert({'sub_id': sub_id, 'op': sub.author.name, 'text': text,
+            collect.insert({'sub_id': sub_id, 'title': sub.title, 'op': sub.author.name, 'text': text,
                     'responses': responses})
 
 def get_teasers(limit=10):
@@ -49,6 +49,10 @@ def get_teasers(limit=10):
 
 
 def get_top_posts(limit=10):
-    posts = collect.find()[0:limit-1]
+    posts_cursor = collect.find()[0:limit-1]
+
+    posts=[]
+    for post in posts_cursor:
+        posts.append(post)
 
     return posts
