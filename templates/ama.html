@@ -69,10 +69,12 @@
 		<div class="span8">
 		  <div class="hero-unit">
 		    {% for response in responses %}
+			{% for reply in response %}
 			<div class="QA">
-			  <p><b>{{ response.question }}</b></p>
-			  <p>{{ response.answer }}</h2>
+			  <p><b>{{ response[reply]['question'] }}</b></p>
+			  <p>{{ response[reply]['answer'] }}</h2>
 			</div>
+			{% endfor %}
 			{% endfor %}
 		  </div>
 		</div><!--/span-->
