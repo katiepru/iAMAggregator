@@ -1,43 +1,44 @@
+<!-- vim: set ts=2 sw=2 expandtab: -->
 <!DOCTYPE html>
 <html lang="en">
   <head>
-	<meta charset="utf-8">
-	<title>IAMAggregator</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
+    <meta charset="utf-8">
+    <title>IAMAggregator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-	<!-- Le styles -->
-	<link href="{{ url_for('static', filename='stylesheets/bootstrap.min.css') }}"
+    <!-- Le styles -->
+    <link href="{{ url_for('static', filename='stylesheets/bootstrap.min.css') }}"
     rel="stylesheet">
-	<link href="{{ url_for('static', filename='stylesheets/styles.css') }}" rel="stylesheet">
-	<style type="text/css">
-	  body {
-		padding-top: 60px;
-		padding-bottom: 40px;
-	  }
-	  .sidebar-nav {
-		padding: 9px 0;
-	  }
+    <link href="{{ url_for('static', filename='stylesheets/styles.css') }}" rel="stylesheet">
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
 
-	  @media (max-width: 980px) {
-		/* Enable use of floated navbar text */
-		.navbar-text.pull-right {
-		  float: none;
-		  padding-left: 5px;
-		  padding-right: 5px;
-		}
-	  }
-	</style>
-	<link href="{{ url_for('static', filename='stylesheets/bootstrap-responsive.min.css') }}" rel="stylesheet">
+      @media (max-width: 980px) {
+        /* Enable use of floated navbar text */
+        .navbar-text.pull-right {
+          float: none;
+          padding-left: 5px;
+          padding-right: 5px;
+        }
+      }
+    </style>
+    <link href="{{ url_for('static', filename='stylesheets/bootstrap-responsive.min.css') }}" rel="stylesheet">
 
-	<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-	<!--[if lt IE 9]>
-	<script src="../assets/js/html5shiv.js"></script>
-	<![endif]-->
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+    <script src="../assets/js/html5shiv.js"></script>
+    <![endif]-->
 
-	<!-- Fav and touch icons -->
-	<link rel="shortcut icon" href="../assets/ico/favicon.png">
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.png">
   </head>
 
   <body>
@@ -48,42 +49,48 @@
       </div>
     </div>
 
-	<div class="container-fluid">
-	  <div class="row-fluid">
-		<div class="span3">
-		  <div class="well sidebar-nav">
-			<ul class="nav nav-list">
-			  <li class="nav-header">Top Aggregated AMAs</li>
-			  {% for post in top_posts %}
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Top Aggregated AMAs</li>
+              {% for post in top_posts %}
               <li><a href="/ama/{{ post.sub_id }}">{{ post.title }}</a></li>
-			  {% endfor %}
-			</ul>
-		  </div><!--/.well -->
-		</div><!--/span-->
-		<div class="span8">
-		  <div class="hero-unit">
-		    {% for response in responses %}
-			{% for reply in response %}
-			<div class="QA">
-				<p><b><span style="color:red;margin-left:-1.35em;">Q: </span>{{ response[reply]['question'] }}</b> -- <span style="color:#FF4500;"> {{ response[reply]['upvotes'] }}</span></p>
-			  <p><span style="color:green;margin-left:-1.35em;">A: </span>{{ response[reply]['answer'] }}</h2>
-			</div>
-			{% endfor %}
-			{% endfor %}
-		  </div>
-		</div><!--/span-->
-	  </div><!--/row-->
+              {% endfor %}
+            </ul>
+          </div><!--/.well -->
+        </div><!--/span-->
+        <div class="span8">
+          <div class="hero-unit">
+            {% if self_text %}
+            <span style="font-size:.85em;">
+              <p>{{ self_text }}</p>
+            </span>
+            <hr style="border-color:gray;"/>
+            {% endif %}
+            {% for response in responses %}
+            {% for reply in response %}
+            <div class="QA">
+              <p><b><span style="color:red;margin-left:-1.35em;">Q: </span>{{ response[reply]['question'] }}</b> -- <span style="color:#FF4500;"> {{ response[reply]['upvotes'] }}</span></p>
+              <p><span style="color:green;margin-left:-1.35em;">A: </span>{{ response[reply]['answer'] }}</h2>
+          </div>
+          {% endfor %}
+          {% endfor %}
+        </div>
+      </div><!--/span-->
+    </div><!--/row-->
 
-	  <hr>
+    <hr>
 
-	</div><!--/.fluid-container-->
+  </div><!--/.fluid-container-->
 
-	<!-- Le javascript
-	================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-	<script src="{{ url_for('static', filename='js/jquery-1.8.2.min.js') }}"></script>
-	<script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+  <!-- Le javascript
+  ================================================== -->
+  <!-- Placed at the end of the document so the pages load faster -->
+  <script src="{{ url_for('static', filename='js/jquery-1.8.2.min.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
 
-  </body>
+</body>
 </html>
 

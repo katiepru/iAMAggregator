@@ -2,6 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 from helpers import *
+import pdb
 
 app = Flask(__name__)
 
@@ -17,7 +18,10 @@ def index():
 def ama(post_id):
     responses = get_responses(post_id, limit=20)
     top_posts = get_top_posts()
-    return render_template('ama.html', responses=responses, top_posts=top_posts)
+    self_text = collect.find({'sub_id': post_id})[0]['text']
+    #pdb.set_trace()
+    return render_template('ama.html', responses=responses,
+            top_posts=top_posts, self_text=self_text)
 
 @app.route('/ajax', methods=['POST'])
 def answer_ajax():
