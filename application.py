@@ -13,7 +13,7 @@ def index():
     print(dir(top_posts))
     return render_template('main.html', top_posts=top_posts, top_qas=top_qas)
 
-@app.route('/ama/<id>')
+@app.route('/ama/<post_id>')
 def ama(post_id):
     responses = get_responses(limit=10)
     print(dir(responses))
