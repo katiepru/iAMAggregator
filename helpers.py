@@ -2,7 +2,7 @@ import pymongo
 import praw
 import json
 import sendgrid
-#from config import *
+from config import *
 
 reddit = praw.Reddit(user_agent='iAMAggregator scanning for new content.')
 subreddit = reddit.get_subreddit("iama")
@@ -75,11 +75,10 @@ def send_email(user, ama_title, email):
 	s.smtp.send(message)
 
 def get_old():
-    post = collection.find_one()
+    post = collect.find_one()
     user = users.find_one()
-
-    send_email(user['user'], user['ama_title'], user['email'])
-    result = collection.remove(spec_or_id={'_id': user['_id']}, safe=True)
+    send_email(user['user'], post['title'], user['email'])
+    result = users.remove(spec_or_id={'_id': user['_id']}, safe=True)
     print result
 
 def addto_db(user, email):
