@@ -59,31 +59,19 @@
 		<div class="span3">
 		  <div class="well sidebar-nav">
 			<ul class="nav nav-list">
-			  <li class="nav-header">Sidebar</li>
-			  <li class="active"><a href="#">Link</a></li>
-			  <li><a href="#">Link</a></li>
-			  <li><a href="#">Link</a></li>
-			  <li><a href="#">Link</a></li>
-			  <li class="nav-header">Sidebar</li>
-			  <li><a href="#">Link</a></li>
-			  <li><a href="#">Link</a></li>
-			  <li><a href="#">Link</a></li>
-			  <li><a href="#">Link</a></li>
-			  <li><a href="#">Link</a></li>
-			  <li><a href="#">Link</a></li>
-			  <li class="nav-header">Sidebar</li>
-			  <li><a href="#">Link</a></li>
-			  <li><a href="#">Link</a></li>
-			  <li><a href="#">Link</a></li>
+			  <li class="nav-header">Top Aggregated AMAs</li>
+			  {% for post in top_posts %}
+              <li><a href="/ama/{{ post.sub_id }}">{{ post.title }}</a></li>
+			  {% endfor %}
 			</ul>
 		  </div><!--/.well -->
 		</div><!--/span-->
 		<div class="span8">
 		  <div class="hero-unit">
-		    {% for comments in post %}
+		    {% for response in responses %}
 			<div class="QA">
-			  <p><b>{{ comment.question }}</b></p>
-			  <p>{{ comment.answer }}</h2>
+			  <p><b>{{ response.question }}</b></p>
+			  <p>{{ response.answer }}</h2>
 			</div>
 			{% endfor %}
 		  </div>
