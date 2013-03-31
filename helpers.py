@@ -33,11 +33,10 @@ def update_amas():
                     responses[comment.id] = {'question': comment.body,
                                             'answer': reply.body,
                                             'upvotes': comment.score}
-                else:
-                    continue
-            if responses:
-                collect.insert({'sub_id': sub_id, 'title': sub.title, 'op': sub.author.name, 'text': text,
-                    'responses': responses})
+
+        if responses:
+            collect.insert({'sub_id': sub_id, 'title': sub.title, 'op': sub.author.name, 'text': text,
+                'responses': responses})
 
 def get_teasers(limit=10):
     amas = collect.find()[0:limit-1]
