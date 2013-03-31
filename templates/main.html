@@ -69,10 +69,12 @@
 		<div class="span8">
 		  <div class="hero-unit">
 		    {% for post in top_qas %}
+			{% for reply in post %}
 			<div class="QA">
-			  <p><b>{{ post['question'] }}</b></p>
-			  <p>{{ post['answer'] }}</h2>
+			  <p><b>{{ post[reply]['question'] }}</b></p>
+			  <p>{{ post[reply]['answer'] }}</h2>
 			</div>
+			{% endfor %}
 			{% endfor %}
 		  </div>
 		</div><!--/span-->
