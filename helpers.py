@@ -68,20 +68,16 @@ def get_responses(post_id, limit=50):
     return replies
 
 def send_email(user, ama_title, email):
-	print user
-	print movie
-	print email
 	s = sendgrid.Sendgrid(sg_user, sg_pass, secure=True)
-	message = sendgrid.Message(sg_email, "New AMA", "A new AMA has been posted: 
-	" + ama_title) 
+	message = sendgrid.Message(sg_email, "New AMA", "A new AMA has been posted: " + ama_title) 
 	message.add_to(email, user)
 	s.smtp.send(message)
 
 def get_old():
-	post = collection.find_one()
+    post = collection.find_one()
     users = db.users
-	user = users.find_one()
+    user = users.find_one()
 
-	send_email(user['user'], user['ama_title'], user['email'])
-	result = collection.remove(spec_or_id={'_id': user['_id']}, safe=True)
-	print result
+    send_email(user['user'], user['ama_title'], user['email'])
+    result = collection.remove(spec_or_id={'_id': user['_id']}, safe=True)
+    print result
