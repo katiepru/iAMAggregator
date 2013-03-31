@@ -42,17 +42,11 @@
 
   <body>
 
-	<div class="navbar navbar-inverse navbar-fixed-top">
-	  <div class="navbar-inner">
-		<div class="container-fluid">
-		  <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		  </button>
-		</div>
-	  </div>
-	</div>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <a class="brand" href="/" style="padding:20px 0px 20px 50px;">iAMAggregator</a>
+      </div>
+    </div>
 
 	<div class="container-fluid">
 	  <div class="row-fluid">
@@ -71,8 +65,8 @@
 		    {% for response in responses %}
 			{% for reply in response %}
 			<div class="QA">
-			  <p><b>{{ response[reply]['question'] }}</b></p>
-			  <p>{{ response[reply]['answer'] }}</h2>
+			  <p><b><span style="color:red;margin-left:-1.35em;">Q: </span>{{ response[reply]['question'] }}</b></p>
+			  <p><span style="color:green;margin-left:-1.35em;">A: </span>{{ response[reply]['answer'] }}</h2>
 			</div>
 			{% endfor %}
 			{% endfor %}
