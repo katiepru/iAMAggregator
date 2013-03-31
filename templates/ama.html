@@ -65,7 +65,7 @@
 		    {% for response in responses %}
 			{% for reply in response %}
 			<div class="QA">
-			  <p><b><span style="color:red;margin-left:-1.35em;">Q: </span>{{ response[reply]['question'] }}</b></p>
+				<p><b><span style="color:red;margin-left:-1.35em;">Q: </span>{{ response[reply]['question'] }}</b> -- <span style="color:#FF4500;"> {{ response[reply]['upvotes'] }}</span></p>
 			  <p><span style="color:green;margin-left:-1.35em;">A: </span>{{ response[reply]['answer'] }}</h2>
 			</div>
 			{% endfor %}

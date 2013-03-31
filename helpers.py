@@ -69,7 +69,7 @@ def get_responses(post_id, limit=50):
 
 def send_email(user, ama_title, email):
 	s = sendgrid.Sendgrid(sg_user, sg_pass, secure=True)
-	message = sendgrid.Message(sg_email, "New AMA", "A new AMA has been posted: " + ama_title) 
+	message = sendgrid.Message(sg_email, "New AMA", "A new AMA has been posted: " + ama_title)
 	message.add_to(email, user)
 	s.smtp.send(message)
 

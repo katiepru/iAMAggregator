@@ -17,9 +17,6 @@ def index():
 def ama(post_id):
     responses = get_responses(post_id, limit=20)
     top_posts = get_top_posts()
-    for i in responses:
-		print i
-		print "------------------------"
     return render_template('ama.html', responses=responses, top_posts=top_posts)
 
 if __name__ == '__main__':
