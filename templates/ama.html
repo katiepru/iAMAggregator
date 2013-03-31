@@ -59,19 +59,31 @@
 		<div class="span3">
 		  <div class="well sidebar-nav">
 			<ul class="nav nav-list">
-			  <li class="nav-header">Top Aggregated AMAs</li>
-			  {% for post in top_posts %}
-				<li><a href="/ama/post.id">post.title</a></li>
-			  {% endfor %}
+			  <li class="nav-header">Sidebar</li>
+			  <li class="active"><a href="#">Link</a></li>
+			  <li><a href="#">Link</a></li>
+			  <li><a href="#">Link</a></li>
+			  <li><a href="#">Link</a></li>
+			  <li class="nav-header">Sidebar</li>
+			  <li><a href="#">Link</a></li>
+			  <li><a href="#">Link</a></li>
+			  <li><a href="#">Link</a></li>
+			  <li><a href="#">Link</a></li>
+			  <li><a href="#">Link</a></li>
+			  <li><a href="#">Link</a></li>
+			  <li class="nav-header">Sidebar</li>
+			  <li><a href="#">Link</a></li>
+			  <li><a href="#">Link</a></li>
+			  <li><a href="#">Link</a></li>
 			</ul>
 		  </div><!--/.well -->
 		</div><!--/span-->
 		<div class="span8">
 		  <div class="hero-unit">
-		    {% for post in top_posts %}
+		    {% for comments in post %}
 			<div class="QA">
-			  <p><b>{{ post.question }}</b></p>
-			  <p>{{ post.answer }}</h2>
+			  <p><b>{{ comment.question }}</b></p>
+			  <p>{{ comment.answer }}</h2>
 			</div>
 			{% endfor %}
 		  </div>
