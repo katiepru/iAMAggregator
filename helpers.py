@@ -11,7 +11,29 @@ dbconnection = pymongo.Connection()
 db = dbconnection.iamaggregator
 collect = db.people
 
-sub = submissions
-while sub != None:
-	sub = sub.next
-	print sub.comments[0]
+def update_amas():
+    for sub in submissions:
+        sub_id = sub.id
+        if collect.find_one({'sub_id': sub_id}):
+            continue
+
+        title = sub.title
+        text = sub.selftext
+        op = sub.author
+
+        responses = {}
+
+        for comment in sub.comments:
+            if str(type(comment)) == "<class 'praw.objects.MoreComments'>":
+                break
+
+            if len(comment.replies) >= 2:
+                reply = comment.replies[0]
+                if reply.author == op:
+                    responses[comment.id] = {'question': comment.body,
+                                            'answer': reply.body,
+                                            'upvotes': comment.score}
+                    break
+        if responses:
+            collect.insert({'sub_id': sub_id, 'op': sub.author.name, 'text': text,
+                    'responses': responses})
