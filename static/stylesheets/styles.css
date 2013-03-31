@@ -8,3 +8,12 @@ div.QA {
 	border-bottom-style: solid;
 	border-bottom-width: 1px;
 }
+
+div.navbar-inner form {
+	padding-right: 15px;
+}
+
+div.navbar-inner form input,
+div.navbar-inner form button {
+	margin-top: 0px !important;
+}
