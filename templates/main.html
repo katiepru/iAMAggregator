@@ -46,6 +46,11 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <a class="brand" href="/" style="padding:20px 0px 20px 50px;">iAMAggregator</a>
+        <form name="mainform" class="form-inline pull-right" style="padding-top: 10px">
+          <input name="_name" type="text" class="input-small" placeholder="Name">
+          <input name="_email"type="text" class="input-small" placeholder="Email">
+          <button type="submit" class="btn" id="gobutton" onclick="validateForm()">Sign Up</button>
+        </form> 
       </div>
     </div>
 
@@ -84,6 +89,7 @@
   <!-- Placed at the end of the document so the pages load faster -->
   <script src="{{ url_for('static', filename='js/jquery-1.8.2.min.js') }}"></script>
   <script src="{{ url_for('static', filename='js/bootstrap.js') }}"></script>
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
 
 </body>
 </html>

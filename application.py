@@ -19,5 +19,18 @@ def ama(post_id):
     top_posts = get_top_posts()
     return render_template('ama.html', responses=responses, top_posts=top_posts)
 
+@app.route('/ajax', methods=['POST'])
+def answer_ajax():
+	print "ajax call reveived"
+	if 'name' in request.form:
+		name = request.form['name']
+	if 'email' in request.form:
+		email = request.form['email']
+
+	addto_db(name, email);
+
+	return 'success'
+
+
 if __name__ == '__main__':
 	app.run(debug=True)

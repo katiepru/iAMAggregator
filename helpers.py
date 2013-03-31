@@ -11,6 +11,7 @@ submissions = subreddit.get_top(limit=10)
 dbconnection = pymongo.Connection()
 db = dbconnection.iamaggregator
 collect = db.people
+users = db.users
 
 def update_amas():
     for sub in submissions:
@@ -75,9 +76,14 @@ def send_email(user, ama_title, email):
 
 def get_old():
     post = collection.find_one()
-    users = db.users
     user = users.find_one()
 
     send_email(user['user'], user['ama_title'], user['email'])
     result = collection.remove(spec_or_id={'_id': user['_id']}, safe=True)
     print result
+
+def addto_db(user, email):
+	post = {"user" : user,
+			"email" : email,
+			}
+	users.insert(post)	
