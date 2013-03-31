@@ -56,3 +56,12 @@ def get_top_posts(limit=10):
         posts.append(post)
 
     return posts
+
+def get_responses(post_id, limit=50):
+    replies_cursor = collect.find({'sub_id': post_id})[0:limit-1]
+
+    replies=[]
+    for reply in replies_cursor:
+        replies.append(reply['responses'])
+
+    return replies
